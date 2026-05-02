@@ -90,7 +90,7 @@ function CustomersPage() {
           <p className="panel-text">Create and route a new customer profile for KYC screening.</p>
           <form className="admin-form" action="#" method="post">
             <div className="form-grid">
-              <label className="field">
+              <label className="field" name="fullName">
                 Full Name
                 <input type="text" placeholder="e.g. Nimal Jayasuriya" />
               </label>
