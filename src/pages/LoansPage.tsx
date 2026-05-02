@@ -103,37 +103,37 @@ function LoansPage() {
           <p className="panel-text">Capture applications before they enter automated underwriting.</p>
           <form className="admin-form" action="#" method="post">
             <div className="form-grid">
-              <label className="field">
+              <label id="label-applicant" className="field">
                 Applicant / Company
-                <input type="text" placeholder="Applicant name" />
+                <input id="applicant" type="text" placeholder="Applicant name" />
               </label>
-              <label className="field">
+              <label id="label-loan-product" className="field">
                 Product
-                <select defaultValue="Mortgage">
+                <select id="loan-product" defaultValue="Mortgage">
                   <option>Mortgage</option>
                   <option>Vehicle</option>
                   <option>Business</option>
                   <option>Personal</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-requested-amount" className="field">
                 Requested Amount (USD)
-                <input type="number" placeholder="500000" />
+                <input id="requested-amount" type="number" placeholder="500000" />
               </label>
-              <label className="field">
+              <label id="label-tenor" className="field">
                 Tenor (Months)
-                <input type="number" placeholder="60" />
+                <input id="tenor" type="number" placeholder="60" />
               </label>
             </div>
-            <label className="field">
+            <label id="label-collateral-summary" className="field">
               Collateral Summary
-              <textarea rows={3} placeholder="Property, vehicle, guarantees, or business assets" />
+              <textarea id="collateral-summary" rows={3} placeholder="Property, vehicle, guarantees, or business assets" />
             </label>
             <div className="form-actions">
-              <button type="button" className="form-btn" onClick={handleAttachDocs}>
+              <button type="button" id="attach-docs" className="form-btn" onClick={handleAttachDocs}>
                 {docsStatus || 'Attach Docs'}
               </button>
-              <button type="submit" className="form-btn strong" onClick={handleCreateCase}>
+              <button type="submit" id="create-case" className="form-btn strong" onClick={handleCreateCase}>
                 {caseStatus || 'Create Case'}
               </button>
             </div>
@@ -145,33 +145,33 @@ function LoansPage() {
           <p className="panel-text">Quickly model rates for relationship managers.</p>
           <form className="admin-form" action="#" method="post">
             <div className="form-grid">
-              <label className="field">
+              <label id="label-risk-band" className="field">
                 Risk Band
-                <select defaultValue="Band B">
+                <select id="risk-band" defaultValue="Band B">
                   <option>Band A</option>
                   <option>Band B</option>
                   <option>Band C</option>
                   <option>Band D</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-base-rate" className="field">
                 Base Rate %
-                <input type="number" step="0.01" placeholder="8.75" />
+                <input id="base-rate" type="number" step="0.01" placeholder="8.75" />
               </label>
-              <label className="field">
+              <label id="label-spread-rate" className="field">
                 Spread %
-                <input type="number" step="0.01" placeholder="1.25" />
+                <input id="spread-rate" type="number" step="0.01" placeholder="1.25" />
               </label>
-              <label className="field">
+              <label id="label-fees-rate" className="field">
                 Fees %
-                <input type="number" step="0.01" placeholder="0.55" />
+                <input id="fees-rate" type="number" step="0.01" placeholder="0.55" />
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn" onClick={handleRunSimulation}>
+              <button type="button" id="run-simulation" className="form-btn" onClick={handleRunSimulation}>
                 {simStatus || 'Run Simulation'}
               </button>
-              <button type="button" className="form-btn strong" onClick={handlePublishQuote}>
+              <button type="button" id="publish-quote" className="form-btn strong" onClick={handlePublishQuote}>
                 {quoteStatus || 'Publish Quote'}
               </button>
             </div>

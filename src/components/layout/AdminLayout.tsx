@@ -64,10 +64,10 @@ function AdminLayout() {
             aria-label="Search"
           />
           <div className="topbar-actions">
-            <button type="button" className="topbar-btn" onClick={handleExportReport}>
+            <button type="button" id="export-report" className="topbar-btn" onClick={handleExportReport}>
               {exportStatus || 'Export Report'}
             </button>
-            <button type="button" className="topbar-btn strong" onClick={handleNewAlertRule}>New Alert Rule</button>
+            <button type="button" id="new-alert-rule" className="topbar-btn strong" onClick={handleNewAlertRule}>New Alert Rule</button>
           </div>
         </header>
 

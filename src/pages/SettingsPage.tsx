@@ -99,30 +99,30 @@ function SettingsPage() {
           <h3>Admin Profile Form</h3>
           <form className="admin-form" action="#" method="post">
             <div className="form-grid">
-              <label className="field">
+              <label id="label-full-name" className="field">
                 Full Name
-                <input type="text" placeholder="Admin name" />
+                <input id="full-name" type="text" placeholder="Admin name" />
               </label>
-              <label className="field">
+              <label id="label-role" className="field">
                 Role
-                <select defaultValue="Operations Manager">
+                <select id="role" defaultValue="Operations Manager">
                   <option>Operations Manager</option>
                   <option>Risk Analyst</option>
                   <option>Credit Supervisor</option>
                   <option>System Administrator</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-work-email" className="field">
                 Work Email
-                <input type="email" placeholder="admin@bank.com" />
+                <input id="work-email" type="email" placeholder="admin@bank.com" />
               </label>
-              <label className="field">
+              <label id="label-contact-number" className="field">
                 Contact Number
-                <input type="tel" placeholder="+94 77 000 0000" />
+                <input id="contact-number" type="tel" placeholder="+94 77 000 0000" />
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn" onClick={handleDiscard}>
+              <button type="button" id="discard-profile" className="form-btn" onClick={handleDiscard}>
                 {discardStatus || 'Discard'}
               </button>
               <button type="submit" id="update-profile" className="form-btn strong" onClick={handleUpdateProfile}>
@@ -136,21 +136,21 @@ function SettingsPage() {
           <h3>System Policy Form</h3>
           <form className="admin-form" action="#" method="post">
             <div className="form-grid">
-              <label className="field">
+              <label id="label-session-timeout" className="field">
                 Session Timeout (Minutes)
-                <input type="number" placeholder="8" />
+                <input id="session-timeout" type="number" placeholder="8" />
               </label>
-              <label className="field">
+              <label id="label-password-rotation" className="field">
                 Password Rotation (Days)
-                <input type="number" placeholder="30" />
+                <input id="password-rotation" type="number" placeholder="30" />
               </label>
-              <label className="field">
+              <label id="label-audit-log-retention" className="field">
                 Audit Log Retention (Months)
-                <input type="number" placeholder="24" />
+                <input id="audit-log-retention" type="number" placeholder="24" />
               </label>
-              <label className="field">
+              <label id="label-incident-notification" className="field">
                 Incident Notification Channel
-                <select defaultValue="Email + SMS">
+                <select id="incident-notification" defaultValue="Email + SMS">
                   <option>Email</option>
                   <option>Email + SMS</option>
                   <option>Pager + Email</option>
@@ -158,10 +158,10 @@ function SettingsPage() {
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn" onClick={handlePreviewPolicy}>
+              <button type="button" id="preview-policy" className="form-btn" onClick={handlePreviewPolicy}>
                 {previewStatus || 'Preview Policy'}
               </button>
-              <button type="submit" className="form-btn strong" onClick={handleApplyPolicy}>
+              <button type="submit" id="apply-policy" className="form-btn strong" onClick={handleApplyPolicy}>
                 {applyStatus || 'Apply Policy'}
               </button>
             </div>
@@ -174,17 +174,17 @@ function SettingsPage() {
         <p className="panel-text">Manage outbound integrations for credit bureau, core banking, and fraud engines.</p>
         <form className="admin-form" action="#" method="post">
           <div className="form-grid three-up">
-            <label className="field">
+            <label id="label-integration-name" className="field">
               Integration Name
-              <input type="text" placeholder="Credit Bureau Gateway" />
+              <input id="integration-name" type="text" placeholder="Credit Bureau Gateway" />
             </label>
-            <label className="field">
+            <label id="label-endpoint-url" className="field">
               Endpoint URL
-              <input type="url" placeholder="https://api.partnerbank.com/v1" />
+              <input id="endpoint-url" type="url" placeholder="https://api.partnerbank.com/v1" />
             </label>
-            <label className="field">
+            <label id="label-health-check-interval" className="field">
               Health Check Interval
-              <select defaultValue="5 min">
+              <select id="health-check-interval" defaultValue="5 min">
                 <option>1 min</option>
                 <option>5 min</option>
                 <option>10 min</option>
@@ -193,10 +193,10 @@ function SettingsPage() {
             </label>
           </div>
           <div className="form-actions">
-            <button type="button" className="form-btn" onClick={handleTestConnection}>
+            <button type="button" id="test-connection" className="form-btn" onClick={handleTestConnection}>
               {testStatus || 'Test Connection'}
             </button>
-            <button type="submit" className="form-btn strong" onClick={handleSaveIntegration}>
+            <button type="submit" id="save-integration" className="form-btn strong" onClick={handleSaveIntegration}>
               {saveIntegrationStatus || 'Save Integration'}
             </button>
           </div>

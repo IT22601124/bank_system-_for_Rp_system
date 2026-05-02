@@ -87,47 +87,47 @@ function BranchesPage() {
           <h3>Branch Support Request Form</h3>
           <form className="admin-form" action="#" method="post">
             <div className="form-grid">
-              <label className="field">
+              <label id="label-branch" className="field">
                 Branch
-                <select defaultValue="Colombo Central">
+                <select id="branch" defaultValue="Colombo Central">
                   <option>Colombo Central</option>
                   <option>Kandy Trade</option>
                   <option>Galle Coast</option>
                   <option>Jaffna North</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-request-type" className="field">
                 Request Type
-                <select defaultValue="IT Infrastructure">
+                <select id="request-type" defaultValue="IT Infrastructure">
                   <option>IT Infrastructure</option>
                   <option>Cash Logistics</option>
                   <option>Security Upgrade</option>
                   <option>Service Quality</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-priority" className="field">
                 Priority
-                <select defaultValue="Medium">
+                <select id="priority" defaultValue="Medium">
                   <option>Low</option>
                   <option>Medium</option>
                   <option>High</option>
                   <option>Urgent</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-target-resolution" className="field">
                 Target Resolution
-                <input type="date" />
+                <input id="target-resolution" type="date" />
               </label>
             </div>
-            <label className="field">
+            <label id="label-issue-summary" className="field">
               Issue Summary
-              <textarea rows={4} placeholder="Describe the branch need or incident context" />
+              <textarea id="issue-summary" rows={4} placeholder="Describe the branch need or incident context" />
             </label>
             <div className="form-actions">
-              <button type="button" className="form-btn" onClick={handleSaveRequest}>
+              <button type="button" id="save-request" className="form-btn" onClick={handleSaveRequest}>
                 {saveStatus || 'Save Request'}
               </button>
-              <button type="submit" className="form-btn strong" onClick={handleSubmitHQ}>
+              <button type="submit" id="submit-hq-ops" className="form-btn strong" onClick={handleSubmitHQ}>
                 {submitStatus || 'Submit to HQ Ops'}
               </button>
             </div>
@@ -138,33 +138,33 @@ function BranchesPage() {
           <h3>Shift Staffing Planner</h3>
           <form className="admin-form" action="#" method="post">
             <div className="form-grid">
-              <label className="field">
+              <label id="label-branch-cluster" className="field">
                 Branch Cluster
-                <select defaultValue="Western Region">
+                <select id="branch-cluster" defaultValue="Western Region">
                   <option>Western Region</option>
                   <option>Central Region</option>
                   <option>Southern Region</option>
                   <option>Northern Region</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-shift-date" className="field">
                 Date
-                <input type="date" />
+                <input id="shift-date" type="date" />
               </label>
-              <label className="field">
+              <label id="label-counter-staff" className="field">
                 Counter Staff Needed
-                <input type="number" placeholder="12" />
+                <input id="counter-staff" type="number" placeholder="12" />
               </label>
-              <label className="field">
+              <label id="label-rm-staff" className="field">
                 RM Staff Needed
-                <input type="number" placeholder="5" />
+                <input id="rm-staff" type="number" placeholder="5" />
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn" onClick={handleRunCapacityCheck}>
+              <button type="button" id="run-capacity-check" className="form-btn" onClick={handleRunCapacityCheck}>
                 {capacityStatus || 'Run Capacity Check'}
               </button>
-              <button type="button" className="form-btn strong" onClick={handleApproveRoster}>
+              <button type="button" id="approve-roster" className="form-btn strong" onClick={handleApproveRoster}>
                 {rosterStatus || 'Approve Roster'}
               </button>
             </div>

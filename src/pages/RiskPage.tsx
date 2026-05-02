@@ -92,42 +92,42 @@ function RiskPage() {
           <h3>Compliance Case Form</h3>
           <form className="admin-form" action="#" method="post">
             <div className="form-grid">
-              <label className="field">
+              <label id="label-case-type" className="field">
                 Case Type
-                <select defaultValue="AML Alert">
+                <select id="case-type" defaultValue="AML Alert">
                   <option>AML Alert</option>
                   <option>KYC Breach</option>
                   <option>Sanctions Hit</option>
                   <option>Operational Risk</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-severity" className="field">
                 Severity
-                <select defaultValue="Medium">
+                <select id="severity" defaultValue="Medium">
                   <option>Low</option>
                   <option>Medium</option>
                   <option>High</option>
                   <option>Critical</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-owner-team" className="field">
                 Owner Team
-                <input type="text" placeholder="Financial Crime Ops" />
+                <input id="owner-team" type="text" placeholder="Financial Crime Ops" />
               </label>
-              <label className="field">
+              <label id="label-case-due-date" className="field">
                 Due Date
-                <input type="date" />
+                <input id="case-due-date" type="date" />
               </label>
             </div>
-            <label className="field">
+            <label id="label-case-description" className="field">
               Description
-              <textarea rows={4} placeholder="Describe suspicious behavior, policy gap, or model issue" />
+              <textarea id="case-description" rows={4} placeholder="Describe suspicious behavior, policy gap, or model issue" />
             </label>
             <div className="form-actions">
-              <button type="button" className="form-btn" onClick={handleEscalate}>
+              <button type="button" id="escalate-case" className="form-btn" onClick={handleEscalate}>
                 {escalateStatus || 'Escalate'}
               </button>
-              <button type="submit" className="form-btn strong" onClick={handleOpenCase}>
+              <button type="submit" id="open-case" className="form-btn strong" onClick={handleOpenCase}>
                 {caseStatus || 'Open Case'}
               </button>
             </div>
@@ -138,37 +138,37 @@ function RiskPage() {
           <h3>Internal Audit Scheduler</h3>
           <form className="admin-form" action="#" method="post">
             <div className="form-grid">
-              <label className="field">
+              <label id="label-business-unit" className="field">
                 Business Unit
-                <select defaultValue="Corporate Lending">
+                <select id="business-unit" defaultValue="Corporate Lending">
                   <option>Corporate Lending</option>
                   <option>Retail Banking</option>
                   <option>Treasury</option>
                   <option>Operations</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-scope-level" className="field">
                 Scope Level
-                <select defaultValue="Full Scope">
+                <select id="scope-level" defaultValue="Full Scope">
                   <option>Full Scope</option>
                   <option>Thematic</option>
                   <option>Targeted</option>
                 </select>
               </label>
-              <label className="field">
+              <label id="label-audit-start-date" className="field">
                 Start Date
-                <input type="date" />
+                <input id="audit-start-date" type="date" />
               </label>
-              <label className="field">
+              <label id="label-lead-auditor" className="field">
                 Lead Auditor
-                <input type="text" placeholder="Auditor name" />
+                <input id="lead-auditor" type="text" placeholder="Auditor name" />
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn" onClick={handleSavePlan}>
+              <button type="button" id="save-plan" className="form-btn" onClick={handleSavePlan}>
                 {planStatus || 'Save Plan'}
               </button>
-              <button type="submit" className="form-btn strong" onClick={handlePublishSchedule}>
+              <button type="submit" id="publish-schedule" className="form-btn strong" onClick={handlePublishSchedule}>
                 {scheduleStatus || 'Publish Schedule'}
               </button>
             </div>
