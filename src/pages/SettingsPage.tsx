@@ -1,4 +1,70 @@
+import { useState } from 'react';
+
 function SettingsPage() {
+  const [discardStatus, setDiscardStatus] = useState('');
+  const [updateStatus, setUpdateStatus] = useState('');
+  const [previewStatus, setPreviewStatus] = useState('');
+  const [applyStatus, setApplyStatus] = useState('');
+  const [testStatus, setTestStatus] = useState('');
+  const [saveIntegrationStatus, setSaveIntegrationStatus] = useState('');
+
+  const handleDiscard = () => {
+    setDiscardStatus('Discarding...');
+    setTimeout(() => {
+      console.log('Profile changes discarded');
+      alert('Changes discarded!');
+      setDiscardStatus('');
+    }, 500);
+  };
+
+  const handleUpdateProfile = (e: React.FormEvent) => {
+    e.preventDefault();
+    setUpdateStatus('Updating...');
+    setTimeout(() => {
+      console.log('Admin profile updated');
+      alert('Admin profile updated successfully!');
+      setUpdateStatus('');
+    }, 1500);
+  };
+
+  const handlePreviewPolicy = () => {
+    setPreviewStatus('Loading...');
+    setTimeout(() => {
+      console.log('System policy preview loaded');
+      alert('Policy Preview: 8 min session timeout, 30 day password rotation');
+      setPreviewStatus('');
+    }, 1000);
+  };
+
+  const handleApplyPolicy = (e: React.FormEvent) => {
+    e.preventDefault();
+    setApplyStatus('Applying...');
+    setTimeout(() => {
+      console.log('System policy applied');
+      alert('Policy applied to all administrators!');
+      setApplyStatus('');
+    }, 1500);
+  };
+
+  const handleTestConnection = () => {
+    setTestStatus('Testing...');
+    setTimeout(() => {
+      console.log('Integration connection test completed');
+      alert('✓ Connection successful (247ms response time)');
+      setTestStatus('');
+    }, 2000);
+  };
+
+  const handleSaveIntegration = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSaveIntegrationStatus('Saving...');
+    setTimeout(() => {
+      console.log('Integration saved');
+      alert('Integration saved and health checks activated!');
+      setSaveIntegrationStatus('');
+    }, 1500);
+  };
+
   return (
     <section className="page-wrap">
       <header className="page-header">
@@ -56,8 +122,12 @@ function SettingsPage() {
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn">Discard</button>
-              <button type="submit" className="form-btn strong">Update Profile</button>
+              <button type="button" className="form-btn" onClick={handleDiscard}>
+                {discardStatus || 'Discard'}
+              </button>
+              <button type="submit" className="form-btn strong" onClick={handleUpdateProfile}>
+                {updateStatus || 'Update Profile'}
+              </button>
             </div>
           </form>
         </article>
@@ -88,8 +158,12 @@ function SettingsPage() {
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn">Preview Policy</button>
-              <button type="submit" className="form-btn strong">Apply Policy</button>
+              <button type="button" className="form-btn" onClick={handlePreviewPolicy}>
+                {previewStatus || 'Preview Policy'}
+              </button>
+              <button type="submit" className="form-btn strong" onClick={handleApplyPolicy}>
+                {applyStatus || 'Apply Policy'}
+              </button>
             </div>
           </form>
         </article>
@@ -119,8 +193,12 @@ function SettingsPage() {
             </label>
           </div>
           <div className="form-actions">
-            <button type="button" className="form-btn">Test Connection</button>
-            <button type="submit" className="form-btn strong">Save Integration</button>
+            <button type="button" className="form-btn" onClick={handleTestConnection}>
+              {testStatus || 'Test Connection'}
+            </button>
+            <button type="submit" className="form-btn strong" onClick={handleSaveIntegration}>
+              {saveIntegrationStatus || 'Save Integration'}
+            </button>
           </div>
         </form>
       </article>

@@ -1,7 +1,50 @@
+import { useState } from 'react';
 import StatusPill from '../components/common/StatusPill';
 import { customers } from '../constants/mockData';
 
 function CustomersPage() {
+  const [draftStatus, setDraftStatus] = useState('');
+  const [kycStatus, setKycStatus] = useState('');
+  const [previewStatus, setPreviewStatus] = useState('');
+  const [campaignStatus, setCampaignStatus] = useState('');
+
+  const handleSaveDraft = () => {
+    setDraftStatus('Saving...');
+    setTimeout(() => {
+      console.log('Customer onboarding draft saved');
+      alert('Draft saved successfully!');
+      setDraftStatus('');
+    }, 1000);
+  };
+
+  const handleSubmitKYC = (e: React.FormEvent) => {
+    e.preventDefault();
+    setKycStatus('Submitting...');
+    setTimeout(() => {
+      console.log('Customer submitted for KYC screening');
+      alert('Customer submitted for KYC screening!');
+      setKycStatus('');
+    }, 1500);
+  };
+
+  const handlePreview = () => {
+    setPreviewStatus('Loading...');
+    setTimeout(() => {
+      console.log('Campaign preview opened');
+      alert('Campaign preview: 12,450 dormant retail customers targeted');
+      setPreviewStatus('');
+    }, 1200);
+  };
+
+  const handleStartCampaign = (e: React.FormEvent) => {
+    e.preventDefault();
+    setCampaignStatus('Starting...');
+    setTimeout(() => {
+      console.log('Retention campaign started');
+      alert('Campaign launched! Engaging 12,450 customers.');
+      setCampaignStatus('');
+    }, 1500);
+  };
   return (
     <section className="page-wrap">
       <header className="page-header">
@@ -74,8 +117,12 @@ function CustomersPage() {
               <textarea rows={4} placeholder="Add due diligence notes or onboarding instructions" />
             </label>
             <div className="form-actions">
-              <button type="button" className="form-btn">Save Draft</button>
-              <button type="submit" className="form-btn strong">Submit for KYC</button>
+              <button type="button" className="form-btn" onClick={handleSaveDraft}>
+                {draftStatus || 'Save Draft'}
+              </button>
+              <button type="submit" className="form-btn strong" onClick={handleSubmitKYC}>
+                {kycStatus || 'Submit for KYC'}
+              </button>
             </div>
           </form>
         </article>
@@ -111,8 +158,12 @@ function CustomersPage() {
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn">Preview</button>
-              <button type="submit" className="form-btn strong">Start Campaign</button>
+              <button type="button" className="form-btn" onClick={handlePreview}>
+                {previewStatus || 'Preview'}
+              </button>
+              <button type="submit" className="form-btn strong" onClick={handleStartCampaign}>
+                {campaignStatus || 'Start Campaign'}
+              </button>
             </div>
           </form>
         </article>

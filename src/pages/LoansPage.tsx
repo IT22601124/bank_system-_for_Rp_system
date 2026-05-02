@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import StatusPill from '../components/common/StatusPill';
 import { loanCases } from '../constants/mockData';
 
@@ -10,6 +11,47 @@ function formatCurrency(value: number) {
 }
 
 function LoansPage() {
+  const [docsStatus, setDocsStatus] = useState('');
+  const [caseStatus, setCaseStatus] = useState('');
+  const [simStatus, setSimStatus] = useState('');
+  const [quoteStatus, setQuoteStatus] = useState('');
+
+  const handleAttachDocs = () => {
+    setDocsStatus('Uploading...');
+    setTimeout(() => {
+      console.log('Documents attached to loan application');
+      alert('3 documents attached successfully!');
+      setDocsStatus('');
+    }, 1500);
+  };
+
+  const handleCreateCase = (e: React.FormEvent) => {
+    e.preventDefault();
+    setCaseStatus('Creating...');
+    setTimeout(() => {
+      console.log('Loan case created');
+      alert('Loan case LC-2026-04891 created and sent for underwriting!');
+      setCaseStatus('');
+    }, 1500);
+  };
+
+  const handleRunSimulation = () => {
+    setSimStatus('Simulating...');
+    setTimeout(() => {
+      console.log('Pricing simulation completed');
+      alert('Simulation complete: APR 10.25% | Monthly Payment: $10,627');
+      setSimStatus('');
+    }, 2000);
+  };
+
+  const handlePublishQuote = () => {
+    setQuoteStatus('Publishing...');
+    setTimeout(() => {
+      console.log('Quote published to RM portal');
+      alert('Quote published! RM portal updated with pricing.');
+      setQuoteStatus('');
+    }, 1500);
+  };
   return (
     <section className="page-wrap">
       <header className="page-header">
@@ -88,8 +130,12 @@ function LoansPage() {
               <textarea rows={3} placeholder="Property, vehicle, guarantees, or business assets" />
             </label>
             <div className="form-actions">
-              <button type="button" className="form-btn">Attach Docs</button>
-              <button type="submit" className="form-btn strong">Create Case</button>
+              <button type="button" className="form-btn" onClick={handleAttachDocs}>
+                {docsStatus || 'Attach Docs'}
+              </button>
+              <button type="submit" className="form-btn strong" onClick={handleCreateCase}>
+                {caseStatus || 'Create Case'}
+              </button>
             </div>
           </form>
         </article>
@@ -122,8 +168,12 @@ function LoansPage() {
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn">Run Simulation</button>
-              <button type="button" className="form-btn strong">Publish Quote</button>
+              <button type="button" className="form-btn" onClick={handleRunSimulation}>
+                {simStatus || 'Run Simulation'}
+              </button>
+              <button type="button" className="form-btn strong" onClick={handlePublishQuote}>
+                {quoteStatus || 'Publish Quote'}
+              </button>
             </div>
           </form>
         </article>

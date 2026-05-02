@@ -1,6 +1,48 @@
+import { useState } from 'react';
 import { branches } from '../constants/mockData';
 
 function BranchesPage() {
+  const [saveStatus, setSaveStatus] = useState('');
+  const [submitStatus, setSubmitStatus] = useState('');
+  const [capacityStatus, setCapacityStatus] = useState('');
+  const [rosterStatus, setRosterStatus] = useState('');
+
+  const handleSaveRequest = () => {
+    setSaveStatus('Saving...');
+    setTimeout(() => {
+      console.log('Branch support request saved');
+      alert('Request saved as draft!');
+      setSaveStatus('');
+    }, 1000);
+  };
+
+  const handleSubmitHQ = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitStatus('Submitting...');
+    setTimeout(() => {
+      console.log('Request submitted to HQ Ops');
+      alert('Request submitted to HQ Operations!');
+      setSubmitStatus('');
+    }, 1500);
+  };
+
+  const handleRunCapacityCheck = () => {
+    setCapacityStatus('Checking...');
+    setTimeout(() => {
+      console.log('Capacity check completed');
+      alert('Capacity check completed. 8 shifts available.');
+      setCapacityStatus('');
+    }, 2000);
+  };
+
+  const handleApproveRoster = () => {
+    setRosterStatus('Approving...');
+    setTimeout(() => {
+      console.log('Roster approved');
+      alert('Roster approved and schedules published!');
+      setRosterStatus('');
+    }, 1500);
+  };
   return (
     <section className="page-wrap">
       <header className="page-header">
@@ -82,8 +124,12 @@ function BranchesPage() {
               <textarea rows={4} placeholder="Describe the branch need or incident context" />
             </label>
             <div className="form-actions">
-              <button type="button" className="form-btn">Save Request</button>
-              <button type="submit" className="form-btn strong">Submit to HQ Ops</button>
+              <button type="button" className="form-btn" onClick={handleSaveRequest}>
+                {saveStatus || 'Save Request'}
+              </button>
+              <button type="submit" className="form-btn strong" onClick={handleSubmitHQ}>
+                {submitStatus || 'Submit to HQ Ops'}
+              </button>
             </div>
           </form>
         </article>
@@ -115,8 +161,12 @@ function BranchesPage() {
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn">Run Capacity Check</button>
-              <button type="button" className="form-btn strong">Approve Roster</button>
+              <button type="button" className="form-btn" onClick={handleRunCapacityCheck}>
+                {capacityStatus || 'Run Capacity Check'}
+              </button>
+              <button type="button" className="form-btn strong" onClick={handleApproveRoster}>
+                {rosterStatus || 'Approve Roster'}
+              </button>
             </div>
           </form>
         </article>

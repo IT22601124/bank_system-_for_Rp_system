@@ -1,4 +1,49 @@
+import { useState } from 'react';
+
 function RiskPage() {
+  const [escalateStatus, setEscalateStatus] = useState('');
+  const [caseStatus, setCaseStatus] = useState('');
+  const [planStatus, setPlanStatus] = useState('');
+  const [scheduleStatus, setScheduleStatus] = useState('');
+
+  const handleEscalate = () => {
+    setEscalateStatus('Escalating...');
+    setTimeout(() => {
+      console.log('Compliance case escalated to Chief Risk Officer');
+      alert('Case escalated to Chief Risk Officer!');
+      setEscalateStatus('');
+    }, 1000);
+  };
+
+  const handleOpenCase = (e: React.FormEvent) => {
+    e.preventDefault();
+    setCaseStatus('Opening...');
+    setTimeout(() => {
+      console.log('Compliance case opened');
+      alert('Case CC-2026-0847 opened in Financial Crime system!');
+      setCaseStatus('');
+    }, 1500);
+  };
+
+  const handleSavePlan = () => {
+    setPlanStatus('Saving...');
+    setTimeout(() => {
+      console.log('Audit plan saved');
+      alert('Audit plan saved as draft!');
+      setPlanStatus('');
+    }, 1000);
+  };
+
+  const handlePublishSchedule = (e: React.FormEvent) => {
+    e.preventDefault();
+    setScheduleStatus('Publishing...');
+    setTimeout(() => {
+      console.log('Audit schedule published');
+      alert('Schedule published! Business units notified.');
+      setScheduleStatus('');
+    }, 1500);
+  };
+
   return (
     <section className="page-wrap">
       <header className="page-header">
@@ -79,8 +124,12 @@ function RiskPage() {
               <textarea rows={4} placeholder="Describe suspicious behavior, policy gap, or model issue" />
             </label>
             <div className="form-actions">
-              <button type="button" className="form-btn">Escalate</button>
-              <button type="submit" className="form-btn strong">Open Case</button>
+              <button type="button" className="form-btn" onClick={handleEscalate}>
+                {escalateStatus || 'Escalate'}
+              </button>
+              <button type="submit" className="form-btn strong" onClick={handleOpenCase}>
+                {caseStatus || 'Open Case'}
+              </button>
             </div>
           </form>
         </article>
@@ -116,8 +165,12 @@ function RiskPage() {
               </label>
             </div>
             <div className="form-actions">
-              <button type="button" className="form-btn">Save Plan</button>
-              <button type="submit" className="form-btn strong">Publish Schedule</button>
+              <button type="button" className="form-btn" onClick={handleSavePlan}>
+                {planStatus || 'Save Plan'}
+              </button>
+              <button type="submit" className="form-btn strong" onClick={handlePublishSchedule}>
+                {scheduleStatus || 'Publish Schedule'}
+              </button>
             </div>
           </form>
         </article>

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 const navItems = [
@@ -11,6 +12,22 @@ const navItems = [
 ];
 
 function AdminLayout() {
+  const [exportStatus, setExportStatus] = useState<string>('');
+
+  const handleExportReport = () => {
+    setExportStatus('Exporting...');
+    setTimeout(() => {
+      console.log('Report exported successfully');
+      alert('Report exported successfully!');
+      setExportStatus('');
+    }, 1500);
+  };
+
+  const handleNewAlertRule = () => {
+    console.log('New Alert Rule modal would open');
+    alert('New Alert Rule modal opened');
+  };
+
   return (
     <div className="admin-shell">
       <aside className="admin-sidebar">
@@ -47,8 +64,10 @@ function AdminLayout() {
             aria-label="Search"
           />
           <div className="topbar-actions">
-            <button type="button" className="topbar-btn">Export Report</button>
-            <button type="button" className="topbar-btn strong">New Alert Rule</button>
+            <button type="button" className="topbar-btn" onClick={handleExportReport}>
+              {exportStatus || 'Export Report'}
+            </button>
+            <button type="button" className="topbar-btn strong" onClick={handleNewAlertRule}>New Alert Rule</button>
           </div>
         </header>
 
