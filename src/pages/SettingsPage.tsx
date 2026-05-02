@@ -125,7 +125,7 @@ function SettingsPage() {
               <button type="button" className="form-btn" onClick={handleDiscard}>
                 {discardStatus || 'Discard'}
               </button>
-              <button type="submit" className="form-btn strong" onClick={handleUpdateProfile}>
+              <button type="submit" id="update-profile" className="form-btn strong" onClick={handleUpdateProfile}>
                 {updateStatus || 'Update Profile'}
               </button>
             </div>
