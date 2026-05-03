@@ -308,7 +308,7 @@ function CustomersPage() {
             </div>
             <label id="label-customer-terms" className="field">
               <input
-                id="customer-term"
+                id="customer-terms"
                 type="checkbox"
                 checked={onboardingForm.termsAccepted}
                 onChange={(event) => updateOnboardingCheckbox('termsAccepted', event.target.checked)}
