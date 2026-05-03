@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
+
+const AUTH_KEY = 'bank-admin-authenticated';
 
 const navItems = [
   { to: '/', label: 'Dashboard' },
@@ -13,6 +15,7 @@ const navItems = [
 
 function AdminLayout() {
   const [exportStatus, setExportStatus] = useState<string>('');
+  const navigate = useNavigate();
 
   const handleExportReport = () => {
     setExportStatus('Exporting...');
@@ -26,6 +29,11 @@ function AdminLayout() {
   const handleNewAlertRule = () => {
     console.log('New Alert Rule modal would open');
     alert('New Alert Rule modal opened');
+  };
+
+  const handleLogout = () => {
+    window.localStorage.removeItem(AUTH_KEY);
+    navigate('/login', { replace: true });
   };
 
   return (
@@ -68,6 +76,9 @@ function AdminLayout() {
               {exportStatus || 'Export Report'}
             </button>
             <button type="button" id="new-alert-rule" className="topbar-btn strong" onClick={handleNewAlertRule}>New Alert Rule</button>
+              <button type="button" id="logout" className="topbar-btn danger" onClick={handleLogout}>
+                Logout
+              </button>
           </div>
         </header>
 
